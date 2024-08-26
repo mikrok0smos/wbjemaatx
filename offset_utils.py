@@ -16,8 +16,6 @@ from IPython.display import display
 from scipy.ndimage import gaussian_filter1d
 from scipy.signal import find_peaks
 from scipy.fft import rfft, rfftfreq
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
 from tqdm import tqdm
 
 from beat_this.preprocessing import load_audio, LogMelSpect
