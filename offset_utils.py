@@ -117,7 +117,7 @@ def dft_coeffs(x, N=None, maxk=None, step=1000):
     return np.stack(coeffs)
 
 def get_magnitude(fourier):
-    magnitude = np.abs(fourier)
+    magnitude = np.abs(fourier)*get_bpm_prior()
     m = len(magnitude)
     magnitude2 = np.zeros_like(magnitude)
     magnitude2[:-(-m//2)] = magnitude[::2]
@@ -126,7 +126,7 @@ def get_magnitude(fourier):
     magnitude4 = np.zeros_like(magnitude)
     magnitude4[:-(-m//4)] = magnitude[::4]
     
-    return (magnitude + magnitude2 + magnitude3 + magnitude4)*get_bpm_prior()
+    return magnitude + magnitude2 + magnitude3 + magnitude4
 
 
 def offset_from_fourier(fourier, idx, fps=50, num_windows=21, bpm_scale=0.1):
@@ -197,7 +197,7 @@ def analyze_activation(beat_activation, num_windows=21, num_ensemble=3, sr=44100
     
     print('performing DFT...')
 
-    coeffs = dft_coeffs(norm_activation, N=int(window_per_sec*600), maxk=10000, step=fourier_step)
+    coeffs = dft_coeffs(norm_activation, N=int(window_per_sec*600), maxk=12001, step=fourier_step)
 
     print('Detecting changepoint...')
     algo = rpt.Pelt(custom_cost=BPMCost()).fit(coeffs)
