@@ -126,7 +126,7 @@ def get_magnitude(fourier):
     magnitude4 = np.zeros_like(magnitude)
     magnitude4[:-(-m//4)] = magnitude[::4]
     
-    return magnitude + magnitude2 + magnitude3 + magnitude4
+    return magnitude + magnitude2*0 + magnitude3*0 + magnitude4*0
 
 
 def offset_from_fourier(fourier, idx, fps=50, num_windows=21, bpm_scale=0.1):
