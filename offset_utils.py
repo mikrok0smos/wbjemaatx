@@ -126,7 +126,7 @@ def get_magnitude(fourier):
     magnitude4 = np.zeros_like(magnitude)
     magnitude4[:-(-m//4)] = magnitude[::4]
     
-    return magnitude + magnitude2*0 + magnitude3*0 + magnitude4*0
+    return magnitude + magnitude2 + magnitude3 + magnitude4
 
 
 def offset_from_fourier(fourier, idx, fps=50, num_windows=21, bpm_scale=0.1):
@@ -261,7 +261,7 @@ def analyze_activation(beat_activation, num_windows=21, num_ensemble=3, sr=44100
             beat_offset = (beat+60/bpm_/2)%(60/bpm_) - 60/bpm_/2
             beat_offsets_.append(beat_offset)
         
-        final_segments.append({'time': time_, 'bpm': bpm_, 'offset': offset_, 'beat':beats_, 'beat_offset':beat_offsets_, 'idx':sorted(idx_list)})
+        final_segments.append({'time': time_, 'bpm': bpm_, 'offset': offset_, 'beat':beats_, 'fourier':fourier_ 'beat_offset':beat_offsets_, 'idx':sorted(idx_list)})
     
     return final_segments    
 
