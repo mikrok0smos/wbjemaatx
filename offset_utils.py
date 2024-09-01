@@ -87,8 +87,8 @@ def get_bpm_prior(integer_prior = 1.6, half_integer_prior = 1.4, primary_range =
     prior = np.ones(12001)
     prior[0::10] *= integer_prior
     prior[5::10] *= half_integer_prior
-    prior[int(secondary_range[0]*10):int(secondary_range[1]*10)] *= secondary_prior
-    prior[int(primary_range[0]*10):int(primary_range[1]*10)] *= primary_prior/secondary_prior
+    prior[int(secondary_range[0]*10):int(secondary_range[1]*10)+1] *= secondary_prior
+    prior[int(primary_range[0]*10):int(primary_range[1]*10)+1] *= primary_prior/secondary_prior
     prior /= np.mean(prior)
     return prior
 
