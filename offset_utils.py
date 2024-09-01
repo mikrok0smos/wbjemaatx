@@ -261,7 +261,7 @@ def analyze_activation(beat_activation, num_windows=21, num_ensemble=3, sr=44100
             beat_offset = (beat+60/bpm_/2)%(60/bpm_) - 60/bpm_/2
             beat_offsets_.append(beat_offset)
         
-        final_segments.append({'time': time_, 'bpm': bpm_, 'offset': offset_, 'fourier':fourier_, beat':beats_, 'beat_offset':beat_offsets_, 'idx':sorted(idx_list)})
+        final_segments.append({'time': time_, 'bpm': bpm_, 'offset': offset_, 'beat':beats_, 'beat_offset':beat_offsets_, 'idx':sorted(idx_list)})
     
     return final_segments    
 
