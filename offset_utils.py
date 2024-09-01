@@ -83,8 +83,8 @@ beat_wisdom = (b'(fftw-3.3.5 fftw_wisdom #x3c273403 #x192df114 #x4d08727c #xe98e
 
 pyfftw.import_wisdom(beat_wisdom)
 
-def get_bpm_prior(integer_prior = 1.6, half_integer_prior = 1.4, primary_range = (80.0, 200.0), secondary_range = (60.0, 240.0), primary_prior = 1.2, secondary_prior = 1.1):
-    prior = np.ones(10000)
+def get_bpm_prior(integer_prior = 1.6, half_integer_prior = 1.4, primary_range = (80.0, 200.0), secondary_range = (60.0, 250.0), primary_prior = 1.2, secondary_prior = 1.1):
+    prior = np.ones(12001)
     prior[0::10] *= integer_prior
     prior[5::10] *= half_integer_prior
     prior[int(secondary_range[0]*10):int(secondary_range[1]*10)] *= secondary_prior
