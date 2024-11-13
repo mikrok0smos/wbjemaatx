@@ -76,7 +76,7 @@ def analyze_beat(audio_path, penalty=1000, return_beat=False):
     result = analyze_activation(beat_activations, num_windows, num_ensemble, sr, fps, penalty=penalty)
     
     if return_beat:
-        return result, beat_activation
+        return result, beat_activations
     else:
         return result
 
